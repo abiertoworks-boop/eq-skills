@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ja" data-tone="reflect">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EQ Skills｜EQを、「知っている」から「使える」へ。｜株式会社Brifu</title>
+<meta name="description" content="EQ Skillsは、株式会社BrifuのEQ教育体系における「横成長」の領域です。感情を手がかりに心の動きの特徴を知り、自分と関わる力・他者と関わる力をスキルとして身につけます。">
+<meta name="theme-color" content="#05070d">
+<meta property="og:title" content="EQ Skills｜EQを、「知っている」から「使える」へ。">
+<meta property="og:description" content="感情を知る。心の動きを知る。自分と関わる力、他者と関わる力を身につける。">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;600&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="images/bg-stars.webp">
+<link rel="stylesheet" href="css/style.css">
+<script>document.documentElement.classList.add('js');if(/[?&]capture=1/.test(location.search))document.documentElement.classList.add('is-capture');</script>
+</head>
+<body id="top">
+
+<!--
+  ✎ リンク先の差し替え
+  講座・体験会 … https://abiertoworks-boop.github.io/EQ2/reserve.html（class="js-course"）
+  お問い合わせ … mailto:info@brifu.co.jp（class="js-contact"）
+  ページ内のボタンはすべてこの2種類。js/main.js 冒頭の LINKS を変えると一括で差し替わります。
+-->
+
+<a class="skip" href="#main">本文へ移動</a>
+
+<!-- 背景：星空の写真2枚（前半は青い星空、「身につけていく力」から星雲）→ その上に WebGL の光（js/scene.js）。
+     写真が読み込めない時は CSS の夜空、WebGL が使えない時は .css-orb が代わりに光る -->
+<div class="backdrop" aria-hidden="true"></div>
+<div class="sky sky--a" aria-hidden="true"></div>
+<div class="sky sky--b" aria-hidden="true"></div>
+<div class="sky-dim" aria-hidden="true"></div>
+<canvas id="world" class="world" aria-hidden="true"></canvas>
+<div class="whiteout" id="whiteout" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+
+<header class="site-header" id="siteHeader">
+  <a class="brand" href="#top" aria-label="EQ Skills ページの先頭へ">
+    <span class="brand__name">EQ Skills</span>
+    <span class="brand__by">株式会社Brifu</span>
+  </a>
+  <nav class="gnav" aria-label="ページ内の目次">
+    <a href="#about">EQ Skillsとは</a>
+    <a href="#powers">身につけていく力</a>
+    <a href="#features">特徴</a>
+    <a href="#programs">主な学び</a>
+    <a href="#growth">横成長と縦成長</a>
+  </nav>
+  <a class="btn btn--sm js-course" href="https://abiertoworks-boop.github.io/EQ2/reserve.html" target="_blank" rel="noopener">講座・体験会を見る</a>
+</header>
+
+<main id="main">
+
+  <!-- ===================== 1. ファーストビュー ===================== -->
+  <section class="hero" data-orb="hero" aria-labelledby="hero-title">
+    <div class="hero__orb orb-anchor" aria-hidden="true"><span class="css-orb"></span></div>
+    <div class="container hero__inner">
+      <p class="eyebrow reveal">EQ Skills — 株式会社Brifu</p>
+      <h1 class="h-display reveal" id="hero-title" style="--d:.1s">EQを、<br>「知っている」から<br>「使える」へ。</h1>
+      <p class="hero__lead reveal" style="--d:.25s">感情を知る。心の動きを知る。<br>自分と関わる力、他者と関わる力を<br class="sp">身につける。</p>
+      <p class="hero__note reveal" style="--d:.35s">EQ Skillsは、株式会社BrifuのEQ教育体系における<br class="pc"><em>「横成長」</em>の領域です。</p>
+      <div class="actions reveal" style="--d:.45s">
+        <a class="btn js-course" href="https://abiertoworks-boop.github.io/EQ2/reserve.html" target="_blank" rel="noopener">EQ Skillsの講座・体験会を見る</a>
+        <a class="btn btn--ghost js-contact" href="mailto:info@brifu.co.jp">お問い合わせ・ご相談はこちら</a>
+      </div>
+    </div>
+    <p class="scroll-cue" aria-hidden="true"><span>Scroll</span><i></i></p>
+  </section>
+
+  <!-- ===================== 2. EQ Skillsとは ===================== -->
+  <section class="sec sec--define" id="about" data-orb="about" aria-labelledby="define-title">
+    <div class="container">
+      <div class="col-text">
+        <h2 class="eyebrow reveal" id="define-title">Definition — EQ Skillsとは</h2>
+        <p class="statement reveal" style="--d:.1s">感情を手がかりに<br>心の動きの特徴を知り、<br>自分と関わる力・他者と関わる力を<br class="pc">スキルとして身につける。</p>
+        <p class="lead reveal">知識を増やすだけでなく、実際に使える力へ。</p>
+        <ol class="flow reveal" aria-label="知識から成果までの流れ">
+          <li><span>知識</span></li>
+          <li><span>行動・実践</span></li>
+          <li><span>スキル・能力の向上</span></li>
+          <li><span>成果</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 3. こんな方へ ===================== -->
+  <section class="sec sec--for" id="for" data-orb="for" aria-labelledby="for-title">
+    <div class="container">
+      <div class="col-text col-text--right">
+        <p class="eyebrow reveal">For You — こんな方へ</p>
+        <h2 class="h-1 reveal" id="for-title">こんな方へ</h2>
+        <ul class="wish3 reveal">
+          <li><b>感情と心の動きを知りたい</b><span>感情の特徴、自分の心がどう動くのか。</span></li>
+          <li><b>整理・調整の方法を身につけたい</b><span>思考と感情を整理する。その場で感情を調整する。</span></li>
+          <li><b>関わり方を学び、仕事や成果に活かしたい</b><span>自分との関わり、相手に合わせたコミュニケーション、人材育成。</span></li>
+        </ul>
+        <p class="body reveal">EQを初めて学ぶ方から、仕事や人材育成に活かしたい方まで、段階に合わせて学べます。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 4. 感情を知ることから ===================== -->
+  <section class="sec sec--emotion" id="emotion" data-orb="emotion" aria-labelledby="emotion-title">
+    <div class="container">
+      <div class="col-center">
+        <p class="eyebrow reveal">Emotion — 感情から始まる</p>
+        <h2 class="h-1 reveal" id="emotion-title">EQは、<br>感情を知ることから始まる</h2>
+        <ul class="feelings reveal" aria-label="さまざまな感情">
+          <li style="--i:0">嬉しい。</li>
+          <li style="--i:1">楽しい。</li>
+          <li style="--i:2">不安。</li>
+          <li style="--i:3">怒り。</li>
+          <li style="--i:4">焦り。</li>
+          <li style="--i:5">悲しみ。</li>
+          <li style="--i:6">悔しさ。</li>
+        </ul>
+        <p class="body reveal">感情には、それぞれ特徴があります。<br>特徴を知ると、自分の心の動きが少しずつ見えてきます。</p>
+        <ul class="voices reveal">
+          <li>「私は今、何を感じているのか」</li>
+          <li>「どんな時に、この感情が動きやすいのか」</li>
+          <li>「その時、どう考え、どう反応しやすいのか」</li>
+        </ul>
+        <p class="closing reveal">感情を良い・悪いで判断せず、なくそうともしない。<br>感情の特徴を知ることから、EQを学びます。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 5. なぜ必要か ===================== -->
+  <section class="sec sec--why" id="why" data-orb="why" aria-labelledby="why-title">
+    <div class="container">
+      <div class="col-text col-text--right">
+        <p class="eyebrow reveal">Why — なぜ必要なのか</p>
+        <h2 class="h-1 reveal" id="why-title">なぜ、<br>EQ Skillsが必要なのか</h2>
+        <p class="why__quote reveal">「分かっているのに、できない。」</p>
+        <p class="body reveal">人との関係で感情が動いた時。判断に迷った時。考えが合わない時。<br>知識があるだけでは、行動につながらないことがあります。</p>
+        <p class="body reveal">だからこそ必要なのが、<em>実際の場面で使えるスキル</em>です。</p>
+        <ul class="beats beats--steps reveal" aria-label="実際の場面で使えるスキル">
+          <li>気づく</li><li>知る</li><li>整理する</li><li>調整する</li><li>違いを見る</li><li>関わり方を変える</li><li>行動する</li>
+        </ul>
+        <p class="closing reveal">EQ Skillsは、EQを知識から実践へ変える力を身につける領域です。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 6. EQ Skillsで身につけていく力（01〜08） ===================== -->
+  <section class="powers" id="powers" data-orb="powers" aria-labelledby="powers-title">
+    <!-- 画面に固定される舞台：光の玉と番号（読み上げは各項目の本文側で行う） -->
+    <div class="powers__stage" aria-hidden="true">
+      <div class="powers__orb orb-anchor"><span class="css-orb"></span></div>
+      <div class="powers__count">
+        <span class="powers__num" id="powersNum">01</span><span class="powers__total">/ 08</span>
+      </div>
+      <div class="powers__ticks"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+
+    <div class="powers__intro" id="powersIntro">
+      <div class="powers__introInner">
+        <p class="eyebrow">Skills — 身につけていく力</p>
+        <h2 class="h-1" id="powers-title">EQ Skillsで<br>身につけていく力</h2>
+      </div>
+    </div>
+
+    <ol class="powers__list">
+      <li class="power">
+        <div class="power__panel">
+          <p class="power__num">01</p>
+          <h3 class="power__title">感情を知る力</h3>
+          <p>どんな感情があり、それぞれにどんな特徴があるのか。感情が動いた時、心や身体にどんな変化が起こるのか。</p>
+          <p>まずは、感情について学ぶことから始めます。</p>
+        </div>
+      </li>
+      <li class="power">
+        <div class="power__panel">
+          <p class="power__num">02</p>
+          <h3 class="power__title">感情から自分の心の動きを知る</h3>
+          <p>同じ出来事でも、感じ方や反応は人によって違います。どんな時に、どの感情が動き、どう反応しやすいのか。</p>
+          <p>感情を手がかりに、自分の心の動きを知っていきます。</p>
+        </div>
+      </li>
+      <li class="power">
+        <div class="power__panel">
+          <p class="power__num">03</p>
+          <h3 class="power__title">自分と関わるスキル</h3>
+          <p>何を感じ、何を考え、何を思っているのか。</p>
+          <p>EQコアカード®やさまざまなワークを活用し、自分の状態を知り、自分と関わる方法を身につけます。</p>
+        </div>
+      </li>
+      <li class="power">
+        <div class="power__panel">
+          <p class="power__num">04</p>
+          <h3 class="power__title">思考と感情を整理するスキル</h3>
+          <p>今、何を感じ、何を考えているのか。</p>
+          <p>感情と思考を整理して自分の状態を把握し、次の行動を考えやすくします。</p>
+        </div>
+      </li>
+      <li class="power">
+        <div class="power__panel">
+          <p class="power__num">05</p>
+          <h3 class="power__title">その場で感情を調整するスキル</h3>
+          <p>感情をなくしたり、抑え込んだりはしません。</p>
+          <ul class="places" aria-label="調整の方法">
+            <li>立ち止まる</li><li>言葉にする</li><li>考えを整理する</li><li>視点を変える</li><li>落ち着かせる</li>
+          </ul>
+          <p>必要に応じて、その場で一時的に感情を調整する方法を身につけます。</p>
+        </div>
+      </li>
+      <li class="power">
+        <div class="power__panel">
+          <p class="power__num">06</p>
+          <h3 class="power__title">他者と関わるスキル</h3>
+          <p>感じ方、考え方、価値観、行動の仕方は人によって異なります。</p>
+          <p>その違いを理解したうえで、相手に合った伝え方や関わり方を選べるようにします。</p>
+        </div>
+      </li>
+      <li class="power">
+        <div class="power__panel">
+          <p class="power__num">07</p>
+          <h3 class="power__title">良好な関係を築くスキル</h3>
+          <p>学んだ知識やスキルを、実際の人との関わりの中で使います。</p>
+          <ul class="places" aria-label="関わりの中で使うこと">
+            <li>伝え方を変える</li><li>整理してから話す</li><li>違いを理解して対応する</li><li>状況に応じて選ぶ</li>
+          </ul>
+          <p>相手との良好な関係を築く方法を身につけます。</p>
+        </div>
+      </li>
+      <li class="power">
+        <div class="power__panel">
+          <p class="power__num">08</p>
+          <h3 class="power__title">EQを行動・成果につなげる力</h3>
+          <p>EQは、知識を得るだけでは高まりません。行動し、繰り返し実践することで使えるスキルが増え、EQの能力が高まっていくと株式会社Brifuは考えています。</p>
+          <ul class="places" aria-label="実践する場面">
+            <li>仕事</li><li>コミュニケーション</li><li>人材育成</li><li>チーム</li><li>日常の人間関係</li>
+          </ul>
+          <p>知識を「できる力」へ変え、成果につなげていきます。</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ===================== 7. 特徴 ===================== -->
+  <section class="sec sec--features" id="features" data-orb="none" aria-labelledby="features-title">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow reveal">Features — EQ Skillsの特徴</p>
+        <h2 class="h-1 reveal" id="features-title">EQ Skillsの特徴</h2>
+      </div>
+      <ol class="features">
+        <li class="feature reveal">
+          <span class="feature__num" aria-hidden="true">1</span>
+          <div class="feature__text">
+            <h3 class="h-3"><span class="vh">1｜</span>感情を学ぶ</h3>
+            <p>EQの知識だけでなく、感情そのものの種類や特徴を学びます。それが、心の動きを知る基礎になります。</p>
+          </div>
+        </li>
+        <li class="feature reveal">
+          <span class="feature__num" aria-hidden="true">2</span>
+          <div class="feature__text">
+            <h3 class="h-3"><span class="vh">2｜</span>感情から自分の心の動きを知る</h3>
+            <p>どんな時に感情が動き、何を思い、どう反応するのか。それが、自分と関わる力の土台になります。</p>
+          </div>
+        </li>
+        <li class="feature reveal">
+          <span class="feature__num" aria-hidden="true">3</span>
+          <div class="feature__text">
+            <h3 class="h-3"><span class="vh">3｜</span>自分と関わる力・他者と関わる力を身につける</h3>
+            <p>自分と、そして他者とどう関わるのか。その方法を知識ではなく、スキルとして身につけます。</p>
+          </div>
+        </li>
+        <li class="feature reveal">
+          <span class="feature__num" aria-hidden="true">4</span>
+          <div class="feature__text">
+            <h3 class="h-3"><span class="vh">4｜</span>行動し、実践することでスキル・能力が上がる</h3>
+            <ul class="beats" aria-label="学びの積み重ね">
+              <li>知る</li><li>理解する</li><li>行動する</li><li>繰り返し実践する</li>
+            </ul>
+            <p>その積み重ねで、使えるスキルが増え、EQの能力が高まっていきます。</p>
+          </div>
+        </li>
+        <li class="feature reveal">
+          <span class="feature__num" aria-hidden="true">5</span>
+          <div class="feature__text">
+            <h3 class="h-3"><span class="vh">5｜</span>日常・仕事で使える</h3>
+            <p>会話、仕事、家族との関係、チーム活動、人材育成。日常のさまざまな場面で活用できます。</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===================== 8. 主な学び ===================== -->
+  <section class="sec sec--programs" id="programs" data-orb="none" aria-labelledby="programs-title">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow reveal">Programs — 主な学び</p>
+        <h2 class="h-1 reveal" id="programs-title">EQ Skillsの主な学び</h2>
+      </div>
+
+      <article class="program program--main reveal">
+        <h3 class="program__name">EQコアカード®</h3>
+        <p class="program__text">106の価値観の言葉を通して、自分自身や相手への理解を深めていく株式会社Brifu独自のEQツールです。</p>
+      </article>
+
+      <div class="programs">
+        <article class="program reveal">
+          <h3 class="program__name">EQセルフコーチ</h3>
+          <p class="program__text">思考や感情を整理し、自分自身で次の行動へ進むためのEQスキルを身につけます。</p>
+        </article>
+        <article class="program reveal" style="--d:.08s">
+          <h3 class="program__name">EQコアカードsession</h3>
+          <p class="program__text">EQコアカード®で自分と相手への理解を深め、対話やコミュニケーションに活かす実践的な学びです。</p>
+        </article>
+        <article class="program reveal">
+          <h3 class="program__name">EQコアカード®公式ナビゲーター</h3>
+          <p class="program__text">EQコアカード®を活用し、EQを人へ届けるための認定資格です。</p>
+        </article>
+        <article class="program reveal" style="--d:.08s">
+          <h3 class="program__name">インストラクター／トレーナー育成</h3>
+          <p class="program__text">自分で実践するだけでなく、人へ伝え、実践を支え、人を育成するところまでを目指す育成領域です。</p>
+        </article>
+      </div>
+
+      <div class="programs__foot reveal">
+        <p class="note">※各講座・資格の最新開催情報・参加条件等についてはお問い合わせください。</p>
+        <div class="actions">
+          <a class="btn js-course" href="https://abiertoworks-boop.github.io/EQ2/reserve.html" target="_blank" rel="noopener">EQ Skillsの講座・体験会を見る</a>
+          <a class="btn btn--ghost js-contact" href="mailto:info@brifu.co.jp">お問い合わせ・ご相談はこちら</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 9. 感情を学ぶ・活用する／横成長と縦成長 ===================== -->
+  <section class="sec sec--growth" id="growth" data-orb="none" aria-labelledby="growth-title">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow reveal">Growth — 横成長と縦成長</p>
+        <h2 class="h-1 reveal" id="growth-title">「感情を学ぶ」と<br>「感情を活用する」</h2>
+        <p class="lead reveal">株式会社Brifuは、感情の学びにも「横成長」と「縦成長」の違いがあると考えています。</p>
+      </div>
+      <div class="growth">
+        <article class="growth__col growth__col--h reveal">
+          <div class="axis axis--h" aria-hidden="true"><i></i><b></b><b></b><b></b><b></b><b></b></div>
+          <p class="compare__tag">EQ Skills — 横成長</p>
+          <h3 class="compare__title">感情を学ぶ</h3>
+          <ul class="beats" aria-label="感情を学ぶこと">
+            <li>知る</li><li>気づく</li><li>言葉にする</li><li>整理する</li><li>一時的に調整する</li>
+          </ul>
+          <p>感情を手がかりに心の動きの特徴を知り、自分と関わる力・他者と関わる力をスキルとして身につける。実践を重ね、<em>「できること」を増やしていく成長</em>です。</p>
+        </article>
+        <article class="growth__col growth__col--v reveal" style="--d:.1s">
+          <div class="axis axis--v" aria-hidden="true"><i></i><b></b><b></b><b></b><b></b></div>
+          <p class="compare__tag">EIA — 縦成長</p>
+          <h3 class="compare__title">感情を活用する</h3>
+          <p>感情が動いた出来事を入口に、自分の認識に気づく。認識・判断・あり方を客観的に見て、出来事を自分自身の成長へ変えていく。</p>
+          <p><em>認識・あり方・人間性そのものを育てていく成長</em>です。</p>
+        </article>
+      </div>
+      <div class="compare__sum reveal">
+        <p class="compare__pair"><span class="k-skills">EQ Skillsは「感情を学ぶ」。</span><span class="k-eia">EIAは「感情を自分の成長に活用する」。</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 10. 私たちが目指すもの ===================== -->
+  <section class="sec sec--vision" id="vision" data-orb="none" aria-labelledby="vision-title">
+    <div class="container">
+      <div class="col-center">
+        <p class="eyebrow reveal">Vision — 私たちが目指すもの</p>
+        <h2 class="h-1 reveal" id="vision-title">EQで変わる。<br>人生も、組織も、社会も。</h2>
+        <ul class="vow reveal">
+          <li>自分を知る。</li>
+          <li>自分を大切にする。</li>
+          <li>相手も大切にする。</li>
+        </ul>
+        <p class="body reveal">そして、その人が持っている可能性を、<br class="pc">人生・仕事・組織の中で活かしていく。</p>
+        <p class="statement statement--center reveal">私たちが目指すのは、<br>お互いを大切にする社会。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 11. 最後のCTA ===================== -->
+  <section class="sec sec--cta" id="contact" data-orb="cta" aria-labelledby="cta-title">
+    <div class="container">
+      <div class="col-center">
+        <div class="cta__orb orb-anchor" aria-hidden="true"><span class="css-orb"></span></div>
+        <p class="eyebrow reveal">Start — はじめの一歩</p>
+        <h2 class="h-1 reveal" id="cta-title">EQ Skillsを学ぶ</h2>
+        <p class="lead reveal">感情を知ることから、<br class="sp">EQを始めてみませんか。</p>
+        <div class="cta__box reveal">
+          <a class="btn btn--lg js-course" href="https://abiertoworks-boop.github.io/EQ2/reserve.html" target="_blank" rel="noopener">EQ Skillsの講座・体験会を見る</a>
+          <p class="cta__sub">EQを仕事・人材育成に活かしたい方は、</p>
+          <a class="btn btn--ghost btn--lg js-contact" href="mailto:info@brifu.co.jp">お問い合わせ・ご相談はこちら</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <p class="brand"><span class="brand__name">EQ Skills</span><span class="brand__by">株式会社Brifu</span></p>
+    <p class="site-footer__link"><a href="https://abiertoworks-boop.github.io/brifu-site/" target="_blank" rel="noopener">株式会社Brifu コーポレートサイト</a></p>
+    <p class="site-footer__copy"><small>&copy; 株式会社Brifu</small></p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/scene.js" defer></script>
+</body>
+</html>
